@@ -10,11 +10,19 @@ public class PlayerController : MonoBehaviour {
 
     public int drunkness = 0;
 
-	// Use this for initialization
-	void Start ()
-    {
-		
-	}
+    public GameObject aKey;
+    public GameObject sKey;
+    public GameObject kKey;
+    public GameObject lKey;
+
+    public SpriteRenderer spriteRendererA;
+    public SpriteRenderer spriteRendererS;
+    public SpriteRenderer spriteRendererK;
+    public SpriteRenderer spriteRendererL;
+
+    public Sprite full;
+    public Sprite empty;
+
 	
 	void Update ()
     {
@@ -29,13 +37,19 @@ public class PlayerController : MonoBehaviour {
             {
                 drink = true;
                 drunkness++;
-                DrinkADrink();
+                spriteRendererA.sprite = empty;
+                spriteRendererS.sprite = full;
+                aKey.SetActive(false);
+                sKey.SetActive(true);
             }
             else if (Input.GetKeyDown(KeyCode.S) && drink)
             {
                 drink = false;
                 drunkness++;
-                DrinkADrink();
+                spriteRendererS.sprite = empty;
+                spriteRendererA.sprite = full;
+                sKey.SetActive(false);
+                aKey.SetActive(true);
             }
         }
         else
@@ -44,19 +58,20 @@ public class PlayerController : MonoBehaviour {
             {
                 drink = true;
                 drunkness++;
-                DrinkADrink();
+                spriteRendererK.sprite = empty;
+                spriteRendererL.sprite = full;
+                kKey.SetActive(false);
+                lKey.SetActive(true);
             }
             else if(Input.GetKeyDown(KeyCode.L) && drink)
             {
                 drink = false;
                 drunkness++;
-                DrinkADrink();
+                spriteRendererL.sprite = empty;
+                spriteRendererK.sprite = full;
+                lKey.SetActive(false);
+                kKey.SetActive(true);
             }
         }
-    }
-
-    void DrinkADrink()
-    {
-        //make the sprite change here
     }
 }
